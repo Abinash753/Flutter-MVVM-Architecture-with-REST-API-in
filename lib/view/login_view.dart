@@ -41,7 +41,13 @@ class _LoginViewState extends State<LoginView> {
     final height = MediaQuery.of(context).size.height * 1;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login"),
+        title: const Text(
+          "Login",
+          style: TextStyle(
+              color: Color.fromARGB(255, 17, 150, 21),
+              fontWeight: FontWeight.bold,
+              fontSize: 25),
+        ),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -59,7 +65,10 @@ class _LoginViewState extends State<LoginView> {
               decoration: const InputDecoration(
                 labelText: "Email",
                 hintText: "Enter Email Address",
-                prefixIcon: Icon(Icons.email),
+                prefixIcon: Icon(
+                  Icons.email,
+                  color: Color.fromARGB(255, 39, 217, 45),
+                ),
               ),
               onFieldSubmitted: (value) {
                 Utils.fieldFocusChange(
@@ -82,14 +91,17 @@ class _LoginViewState extends State<LoginView> {
                     decoration: InputDecoration(
                       labelText: "Password",
                       hintText: "Enter Password",
-                      prefixIcon: const Icon(Icons.lock),
+                      prefixIcon: const Icon(Icons.lock,
+                          color: Color.fromARGB(255, 39, 217, 45)),
                       suffixIcon: InkWell(
                           onTap: () {
                             _obsecurePassword.value = !_obsecurePassword.value;
                           },
-                          child: Icon(_obsecurePassword.value
-                              ? Icons.visibility_off
-                              : Icons.visibility)),
+                          child: Icon(
+                              _obsecurePassword.value
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: const Color.fromARGB(255, 39, 217, 45))),
                     ),
                   );
                 }),

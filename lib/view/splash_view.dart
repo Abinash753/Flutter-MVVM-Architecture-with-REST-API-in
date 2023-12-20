@@ -30,5 +30,5 @@ class _SplashViewState extends State<SplashView> {
   }
 } 
 
-35 mit  
-https://www.youtube.com/watch?v=q1ngVwxt2uI&list=PLFyjjoCMAPtzn7tFLRV3eny7G74LnlMRt&index=23
+//35 mit  
+//https://www.youtube.com/watch?v=q1ngVwxt2uI&list=PLFyjjoCMAPtzn7tFLRV3eny7G74LnlMRt&index=23
