@@ -5,15 +5,15 @@ import 'package:mvvm_architecture/utilies/utils.dart';
 import 'package:mvvm_architecture/view_model/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class SignUPView extends StatefulWidget {
+  const SignUPView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<SignUPView> createState() => _SignUPViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
-//controllers for storing the entered data
+class _SignUPViewState extends State<SignUPView> {
+  //controllers for storing the entered data
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   //focus  for textfield
@@ -41,7 +41,7 @@ class _LoginViewState extends State<LoginView> {
     final height = MediaQuery.of(context).size.height * 1;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login"),
+        title: const Text("SignUp"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -99,8 +99,8 @@ class _LoginViewState extends State<LoginView> {
             ),
             //login button
             RoundButton(
-              title: "Login",
-              loading: authViewModel.loading,
+              title: "Sign Up",
+              loading: authViewModel.signupLoadin,
               onpress: () {
                 if (_emailController.text.isEmpty) {
                   Utils.flushBarErrorMessage("Please Enter email", context);
@@ -109,15 +109,11 @@ class _LoginViewState extends State<LoginView> {
                 } else if (_passwordController.text.length < 6) {
                   Utils.flushBarErrorMessage("Enter Strong Password", context);
                 } else {
-                  // Map data = {
-                  //   "email": _emailController.text.trim().toString(),
-                  //   "password": _passwordController.text.trim().toString()
-                  // };
                   Map data = {
-                    "email": "eve.holt@reqres.in",
-                    "password": "cityslicka"
+                    "email": _emailController.text.trim().toString(),
+                    "password": _passwordController.text.trim().toString()
                   };
-                  authViewModel.loginAPI(context, data);
+                  authViewModel.signUpAPI(context, data);
                 }
               },
             ),
@@ -127,9 +123,9 @@ class _LoginViewState extends State<LoginView> {
             //
             InkWell(
               onTap: () {
-                Navigator.pushNamed(context, RoutesName.signUp);
+                Navigator.pushReplacementNamed(context, RoutesName.login);
               },
-              child: const Text("Don't have an Account? Sign Up"),
+              child: const Text("Already have an Account? Login"),
             ),
           ],
         ),
